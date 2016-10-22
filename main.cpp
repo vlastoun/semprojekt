@@ -1,22 +1,50 @@
 #include <iostream>     // std::cout
 #include <algorithm>    // std::next_permutation, std::sort
+#include "operace.h"
+
+/**
+ * @brief Hlavni soubor programu
+ * @file main.cpp
+ * @author Vlastimil Sadilek
+ * @mainpage permutace
+ */
 
 using namespace std;
 
 int main () {
-  int n;
+    int n;
+    int citacPermutaci = 0;
+    int pocetPermutaci = 0;
+
+    n = 4;
+    pocetPermutaci = factorial(n);
+
+    int zpole[n];
+    int permPole[pocetPermutaci][n];
+
+    zadejPole(zpole,n);
+    vypisPole(zpole,n);
+    cout << endl << endl;
+
+    do {
+        for (int i = 0; i < n; i++){
+            permPole[citacPermutaci][i] = zpole[i];
+        }
+        citacPermutaci++;
+    } while ( std::next_permutation(zpole,zpole+n) );
 
 
-  int myints[] = {1,2,3};
+    for (int j = 0; j < citacPermutaci; j++){
+            for (int i = 0; i < n; i++){
+               cout << permPole[j][i]<<"  ";
+            }
+            cout << endl;
+    }
 
 
-
-  cout << "The 3! possible permutations with 3 elements:\n";
-  do {
-    cout << myints[0] << ' ' << myints[1] << ' ' << myints[2] << '\n';
-  } while ( next_permutation(myints,myints+3) );
-
-  cout << "After loop: " << myints[0] << ' ' << myints[1] << ' ' << myints[2] << '\n';
+    cout << "Celkem probehlo permutaci: " << citacPermutaci <<endl;
+    cout << "n!:  " << pocetPermutaci <<endl;
 
   return 0;
 }
+
