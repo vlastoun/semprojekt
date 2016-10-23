@@ -16,23 +16,23 @@ using namespace std;
 
 int main () {
     int n;                          /**< Vstupni parametr pro volbu velikosti pole. */
-    int citacPermutaci = 0;
-    int pocetPermutaci = 0;
+    long int citacPermutaci = 0;
+    long int pocetPermutaci = 0;
     int vymeny = 0;
     int porovnani = 0;
     int *ukazatel1;
     int *ukazatel2;
 
-    n = 4;
+    n = 8;
     pocetPermutaci = factorial(n);
 
     int zpole[n];
     int tmpPole[n];
-    int pocetVymen[pocetPermutaci];
-    int pocetPorovnani[pocetPermutaci];
+    int poleVymen[pocetPermutaci];
+    int polePorovnani[pocetPermutaci];
 
-    cout << &porovnani<< endl;
-    cout << &vymeny<< endl;
+    //cout << &porovnani<< endl;
+    //cout << &vymeny<< endl;
 
     zadejPole(zpole,n);
     vypisPole(zpole,n);
@@ -40,26 +40,62 @@ int main () {
 
     do {
         kopPole(zpole,tmpPole,n);
-        vypisPole(tmpPole,n);
-        cout << '\t' << "Setrizene pole: ";
+        //vypisPole(tmpPole,n);
+        //cout << '\t' << "Setrizene pole: ";
         ukazatel1 = &vymeny;
         ukazatel2 = &porovnani;
         BubbleSort(tmpPole,n,ukazatel1,ukazatel2);
-        vypisPole(tmpPole,n);
-        pocetPorovnani[citacPermutaci] = porovnani;
-        pocetVymen[citacPermutaci] = vymeny;
-        cout << '\t'<< "PV:" << vymeny;
-        cout << '\t'<< "PP:" << porovnani;
-        cout << endl;
+        //vypisPole(tmpPole,n);
+        polePorovnani[citacPermutaci] = porovnani;
+        poleVymen[citacPermutaci] = vymeny;
+        //cout << '\t'<< "PV:" << vymeny;
+        //cout << '\t'<< "PP:" << porovnani;
+        //cout << endl;
         citacPermutaci++;
     } while (next_permutation(zpole,zpole+n));
 
-    cout << "Pole vymen"<< endl;
-    vypisPole(pocetVymen,pocetPermutaci);
+    //sort(polePorovnani,polePorovnani+pocetPermutaci);
+    //sort(poleVymen,poleVymen+pocetPermutaci);
+
+    //cout << "Pole vymen"<< endl;
+    //vypisPole(poleVymen,pocetPermutaci);
+    //cout << endl;
+    //cout << "Pole porovnani" << endl;
+    //vypisPole(polePorovnani,pocetPermutaci);
+    //cout << endl<<endl;
+
+
+    int max = maxPole(polePorovnani,pocetPermutaci)+1;
+    int histogram [max];
+
+    for (int i = 0; i < max; i++){
+        histogram[i] = 0;
+    }
+
+    for (int i = 0; i < max; i++){
+        for (long int j = 0; j < pocetPermutaci; j++){
+            if (i == polePorovnani[j]){
+                histogram[i] = histogram[i]+1;
+            }
+        }
+    }
+    long int kontrola = 0;
+    for (int i = 0; i < max; i++){
+            kontrola = kontrola + histogram[i];
+
+    }
+
+
+    cout << "histogram"<< endl;
+
+    for (int i = 0; i < max; i++){
+        cout << "Pocet vyskytu "<< i << " porovnani:\t" << histogram [i]<< endl;
+    }
+
     cout << endl;
-    cout << "Pole porovnani" << endl;
-    vypisPole(pocetPorovnani,pocetPermutaci);
-    cout << endl;
+
+    cout << "kontrola"<< endl;
+    cout << kontrola << endl;
 
     cout << "Celkem probehlo permutaci: " << citacPermutaci <<endl;
     cout << "n!:  " << pocetPermutaci <<endl;

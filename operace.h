@@ -14,7 +14,7 @@ using namespace std;
  */
 void vypisPole(int arr[], int size){
     for (int i = 0; i < size; i++){
-        cout << arr[i]<<"  ";
+        cout << arr[i]<< " ";
     }
 }
 
@@ -39,7 +39,7 @@ void zadejPole(int arr[], int size){
  * \return Funkce vraci hodnotu faktorialu vstupniho cisla n.
  *
  */
-int factorial(int n)
+long int factorial(int n)
 {
     if(n!=1)
     return n*factorial(n-1);
@@ -51,3 +51,12 @@ void kopPole (int arr[], int tmp[], int size){
     }
 }
 
+int maxPole (int arr[], int size){
+    int max = 0;
+    for (int i = 0; i < size; i++){
+        if ( arr[i] > max){
+            max = arr[i];
+        }
+    }
+return max;
+}
