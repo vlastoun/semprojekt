@@ -1,18 +1,21 @@
-#include <iostream>     // std::cout
+#include <iostream>     // cout, cin
 #include <algorithm>    // std::next_permutation, std::sort
 #include "operace.h"
+#include "bubblesort.h"
 
-/**
- * @brief Hlavni soubor programu
- * @file main.cpp
- * @author Vlastimil Sadilek
- * @mainpage permutace
+/** \brief Hlavni soubor programu
+ *  \file main.cpp
+ *  \author Vlastimil Sadilek
+ *  \mainpage permutace
  */
+
 
 using namespace std;
 
+
+
 int main () {
-    int n;
+    int n;                          /**< Vstupni parametr pro volbu velikosti pole. */
     int citacPermutaci = 0;
     int pocetPermutaci = 0;
 
@@ -31,7 +34,7 @@ int main () {
             permPole[citacPermutaci][i] = zpole[i];
         }
         citacPermutaci++;
-    } while ( std::next_permutation(zpole,zpole+n) );
+    } while (next_permutation(zpole,zpole+n) );
 
 
     for (int j = 0; j < citacPermutaci; j++){
