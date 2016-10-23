@@ -20,14 +20,16 @@ int main () {
     int pocetPermutaci = 0;
     int vymeny = 0;
     int porovnani = 0;
+    int *ukazatel1;
+    int *ukazatel2;
 
     n = 4;
     pocetPermutaci = factorial(n);
 
     int zpole[n];
     int tmpPole[n];
-    int pocetVymen[n];
-    int pocetPorovnani[n];
+    int pocetVymen[pocetPermutaci];
+    int pocetPorovnani[pocetPermutaci];
 
     cout << &porovnani<< endl;
     cout << &vymeny<< endl;
@@ -40,14 +42,24 @@ int main () {
         kopPole(zpole,tmpPole,n);
         vypisPole(tmpPole,n);
         cout << '\t' << "Setrizene pole: ";
-        BubbleSort(tmpPole,n);
-        pocetVymen[citacPermutaci] = vymeny;
-        pocetPorovnani[citacPermutaci] = porovnani;
+        ukazatel1 = &vymeny;
+        ukazatel2 = &porovnani;
+        BubbleSort(tmpPole,n,ukazatel1,ukazatel2);
         vypisPole(tmpPole,n);
+        pocetPorovnani[citacPermutaci] = porovnani;
+        pocetVymen[citacPermutaci] = vymeny;
+        cout << '\t'<< "PV:" << vymeny;
+        cout << '\t'<< "PP:" << porovnani;
         cout << endl;
         citacPermutaci++;
     } while (next_permutation(zpole,zpole+n));
 
+    cout << "Pole vymen"<< endl;
+    vypisPole(pocetVymen,pocetPermutaci);
+    cout << endl;
+    cout << "Pole porovnani" << endl;
+    vypisPole(pocetPorovnani,pocetPermutaci);
+    cout << endl;
 
     cout << "Celkem probehlo permutaci: " << citacPermutaci <<endl;
     cout << "n!:  " << pocetPermutaci <<endl;

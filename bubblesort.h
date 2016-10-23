@@ -2,7 +2,7 @@
  *  \file bubblesort.h
  *
  */
-void BubbleSort(int a[], const int N){
+void BubbleSort(int a[], const int N, int *vymeny, int *porovnani){
     int Right = N - 1;
     int LastExchangeIndex;
     int v = 0;
@@ -21,4 +21,6 @@ void BubbleSort(int a[], const int N){
         }
     Right = LastExchangeIndex;
     } while (LastExchangeIndex > 0);
+    *vymeny = v;
+    *porovnani = p;
 }
