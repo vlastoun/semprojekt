@@ -42,5 +42,12 @@ void zadejPole(int arr[], int size){
 int factorial(int n)
 {
     if(n!=1)
-     return n*factorial(n-1);
+    return n*factorial(n-1);
 }
+
+void kopPole (int arr[], int tmp[], int size){
+    for (int i = 0; i < size; i++){
+        tmp[i] = arr [i];
+    }
+}
+
