@@ -3,7 +3,6 @@
  *
  */
 
-
 using namespace std;
 
 /** \brief Funkce pro vypsani pole na obrazovku.
