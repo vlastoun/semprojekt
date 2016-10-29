@@ -13,17 +13,24 @@
 using namespace std;
 
 void permutace (int zaklPole[],int comp[],int chnges[], int size){
+    cout << "**********Zakladni pole*********" << endl;
+    vypisPole(zaklPole, size);
+    cout << "--------------------------------" << endl;
+    cout << endl;
     int changes = 0;
     int comparsions = 0;
     int tmp [size];
     int *pointer1;
     int *pointer2;
     int counter=0;
+
+    cout << endl;
     do{
         kopPole(zaklPole,tmp,size);
         pointer1 = &changes;
         pointer2 = &comparsions;
-        BubbleSort(zaklPole, size, pointer1, pointer2);
+        BubbleSort(tmp, size, pointer1, pointer2);
+        vypisPole(tmp,size);
         chnges[counter] = changes;
         comp[counter] = comparsions;
         counter++;
@@ -40,7 +47,7 @@ int main () {
     int *ukazatel1;
     int *ukazatel2;
 
-    n = 8;
+    n = 3;
     pocetPermutaci = factorial(n);
 
     int zpole[n];
@@ -49,6 +56,8 @@ int main () {
     int polePorovnani[pocetPermutaci];
 
     zadejPole(zpole,n);
+    vypisPole(zpole,n);
+    cout << endl;
 
     do {
         kopPole(zpole,tmpPole,n);
@@ -59,14 +68,23 @@ int main () {
         poleVymen[citacPermutaci] = vymeny;
         citacPermutaci++;
     } while (next_permutation(zpole,zpole+n));
+    cout <<"************ Pole porovnani *******************"<<endl;
+    vypisPole(polePorovnani, pocetPermutaci);
+    cout << endl;
+    cout <<"************ Pole vymen ***********************"<<endl;
+    vypisPole(poleVymen,pocetPermutaci);
+    cout << endl <<"***********************************************"<< endl;
 
     int ArrayOfComparsions [pocetPermutaci];
     int ArrayOfChanges [pocetPermutaci];
-
+    cout << "permutace"<< endl;
     permutace(zpole,ArrayOfComparsions,ArrayOfChanges,n);
+    cout << "popermutacich" << endl;
+    vypisPole(ArrayOfComparsions,pocetPermutaci);
+    vypisPole(ArrayOfChanges,pocetPermutaci);
 
 
-
+    cout << endl;
     int max = maxPole(polePorovnani,pocetPermutaci)+1;
     int histogram [max];
 

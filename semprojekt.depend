@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1477766777 source:c:\users\v\documents\github\semprojekt\main.cpp
+	<iostream>
+	<algorithm>
+	"operace.h"
+	"bubblesort.h"
+
+1477766805 c:\users\v\documents\github\semprojekt\operace.h
+
+1477758320 c:\users\v\documents\github\semprojekt\bubblesort.h
+
