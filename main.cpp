@@ -12,6 +12,23 @@
 
 using namespace std;
 
+void permutace (int zaklPole[],int comp[],int chnges[], int size){
+    int changes = 0;
+    int comparsions = 0;
+    int tmp [size];
+    int *pointer1;
+    int *pointer2;
+    int counter=0;
+    do{
+        kopPole(zaklPole,tmp,size);
+        pointer1 = &changes;
+        pointer2 = &comparsions;
+        BubbleSort(zaklPole, size, pointer1, pointer2);
+        chnges[counter] = changes;
+        comp[counter] = comparsions;
+        counter++;
+    }while (next_permutation(zaklPole,zaklPole+size));
+}
 
 
 int main () {
@@ -31,38 +48,23 @@ int main () {
     int poleVymen[pocetPermutaci];
     int polePorovnani[pocetPermutaci];
 
-    //cout << &porovnani<< endl;
-    //cout << &vymeny<< endl;
-
     zadejPole(zpole,n);
-    vypisPole(zpole,n);
-    cout << endl << endl;
 
     do {
         kopPole(zpole,tmpPole,n);
-        //vypisPole(tmpPole,n);
-        //cout << '\t' << "Setrizene pole: ";
         ukazatel1 = &vymeny;
         ukazatel2 = &porovnani;
         BubbleSort(tmpPole,n,ukazatel1,ukazatel2);
-        //vypisPole(tmpPole,n);
         polePorovnani[citacPermutaci] = porovnani;
         poleVymen[citacPermutaci] = vymeny;
-        //cout << '\t'<< "PV:" << vymeny;
-        //cout << '\t'<< "PP:" << porovnani;
-        //cout << endl;
         citacPermutaci++;
     } while (next_permutation(zpole,zpole+n));
 
-    //sort(polePorovnani,polePorovnani+pocetPermutaci);
-    //sort(poleVymen,poleVymen+pocetPermutaci);
+    int ArrayOfComparsions [pocetPermutaci];
+    int ArrayOfChanges [pocetPermutaci];
 
-    //cout << "Pole vymen"<< endl;
-    //vypisPole(poleVymen,pocetPermutaci);
-    //cout << endl;
-    //cout << "Pole porovnani" << endl;
-    //vypisPole(polePorovnani,pocetPermutaci);
-    //cout << endl<<endl;
+    permutace(zpole,ArrayOfComparsions,ArrayOfChanges,n);
+
 
 
     int max = maxPole(polePorovnani,pocetPermutaci)+1;
