@@ -2,6 +2,17 @@
  *  \file bubblesort.h
  *
  */
+
+
+ /** \brief Algoritmus bubblesortu
+ *
+ * \param a[] Pole urcene k setrizeni;
+ * \param N Velikost trideneho pole;
+ * \param *vymeny adresa pro ulozeni vymen
+ * \param *porovnani adresa pro ulozeni porovnani
+ * \return void
+ *
+ */
 void BubbleSort(int a[], const int N, int *vymeny, int *porovnani){
     int Right = N - 1;
     int LastExchangeIndex;
@@ -21,8 +32,8 @@ void BubbleSort(int a[], const int N, int *vymeny, int *porovnani){
         }
     Right = LastExchangeIndex;
     } while (LastExchangeIndex > 0);
-    *vymeny = v;
-    *porovnani = p;
+    *vymeny = v; /**< priradim hodnoty vymen na tuhle adresu */
+    *porovnani = p; /**< priradim hodnoty porovnani na tuhle adresu */
 }
 
 /** \brief Hlavní funkce pro tvorbu pole zmen a porovnani.
@@ -35,22 +46,22 @@ void BubbleSort(int a[], const int N, int *vymeny, int *porovnani){
  *
  */
 
-void permutace (int zaklPole[],int comp[],int chnges[], int size){
+void permutace (int zaklPole[],int ComparsionArray[],int ChangesArray[], int size){
     vypisPole(zaklPole, size);
-    int changes = 0;
-    int comparsions = 0;
+    int changes;
+    int comparsions;
     int tmp [size];
-    int *pointer1;
-    int *pointer2;
+    int *PointerAtChanges;
+    int *PointerAtComparsions;
     int counter=0;
 
     do{
         kopPole(zaklPole,tmp,size);
-        pointer1 = &changes;
-        pointer2 = &comparsions;
-        BubbleSort(tmp, size, pointer1, pointer2);
-        chnges[counter] = changes;
-        comp[counter] = comparsions;
+        PointerAtChanges = &changes; /**< Prirazeni adresy ukazateli */
+        PointerAtComparsions = &comparsions; /**< Prirazeni adresy ukazateli */
+        BubbleSort(tmp, size, PointerAtChanges, PointerAtComparsions); /**< Serazeni docasneho pole a prirazeni  */
+        ChangesArray[counter] = changes; /**< ulozeni hodnot do pole zmen */
+        ComparsionArray[counter] = comparsions; /**< ulozeni hodnot do pole porovnani */
         counter++;
     }while (next_permutation(zaklPole,zaklPole+size));
 }

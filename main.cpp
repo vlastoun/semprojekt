@@ -24,8 +24,7 @@ int main () {
     int ArrayOfComparsions [pocetPermutaci];
     int ArrayOfChanges [pocetPermutaci];
     permutace(zpole,ArrayOfComparsions,ArrayOfChanges,n);
-    vypisPole(ArrayOfComparsions,pocetPermutaci);
-    vypisPole(ArrayOfChanges,pocetPermutaci);
+
   return 0;
 }
 
