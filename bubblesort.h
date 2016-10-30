@@ -65,6 +65,7 @@ void permutace (int EntryArray[],int ComparsionArray[],int ChangesArray[], int s
         ComparsionArray[counter] = comparsions;							/**< ulozeni hodnot do pole porovnani */
         counter++;
     }while (next_permutation(EntryArray,EntryArray+size));
+	delete[]tmp;
 }
 
 void histogram(int InputArray[], int HistoArray[],const int SizeOfArray, const int MaxOfHistogram){
