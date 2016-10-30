@@ -47,26 +47,27 @@ void BubbleSort(int a[], const int N, int *vymeny, int *porovnani){
  */
 
 void permutace (int EntryArray[],int ComparsionArray[],int ChangesArray[], int size){
-    vypisPole(EntryArray, size);
+	PrintArray(EntryArray, size);
     int changes;
     int comparsions;
-    int tmp [size];
+	int *tmp;
+	tmp = new int[size];
     int *PointerAtChanges;
     int *PointerAtComparsions;
     int counter=0;
 
     do{
-        kopPole(EntryArray,tmp,size);
-        PointerAtChanges = &changes; /**< Prirazeni adresy ukazateli */
-        PointerAtComparsions = &comparsions; /**< Prirazeni adresy ukazateli */
-        BubbleSort(tmp, size, PointerAtChanges, PointerAtComparsions); /**< Serazeni docasneho pole a prirazeni  */
-        ChangesArray[counter] = changes; /**< ulozeni hodnot do pole zmen */
-        ComparsionArray[counter] = comparsions; /**< ulozeni hodnot do pole porovnani */
+        CopyArray(EntryArray,tmp,size);
+        PointerAtChanges = &changes;									/**< Prirazeni adresy ukazateli */
+        PointerAtComparsions = &comparsions;							/**< Prirazeni adresy ukazateli */
+        BubbleSort(tmp, size, PointerAtChanges, PointerAtComparsions);	/**< Serazeni docasneho pole a prirazeni  */
+        ChangesArray[counter] = changes;								/**< ulozeni hodnot do pole zmen */
+        ComparsionArray[counter] = comparsions;							/**< ulozeni hodnot do pole porovnani */
         counter++;
     }while (next_permutation(EntryArray,EntryArray+size));
 }
 
-void histogram(int InputArray[], int HistoArray[],int SizeOfArray, int MaxOfHistogram){
+void histogram(int InputArray[], int HistoArray[],const int SizeOfArray, const int MaxOfHistogram){
     for (int i = 0; i < MaxOfHistogram; i++){
         HistoArray[i]=0;
     }

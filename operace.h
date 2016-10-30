@@ -11,7 +11,7 @@ using namespace std;
  * \param size      Velikost vstupniho pole.
  *
  */
-void vypisPole(int arr[], int size){
+void PrintArray(int arr[],	const int size){
     for (int i = 0; i < size; i++){
         cout << arr[i]<< " ";
     }
@@ -26,7 +26,7 @@ void vypisPole(int arr[], int size){
  * \param size      Velikost vstupniho pole.
  *
  */
-void zadejPole(int arr[], int size){
+void InitializeArray(int arr[], int size){
     for (int i = 0, j=1 ; i<size; i++, j++){
         arr[i] = j;
     }
@@ -39,19 +39,18 @@ void zadejPole(int arr[], int size){
  * \return Funkce vraci hodnotu faktorialu vstupniho cisla n.
  *
  */
-long int factorial(int n)
-{
+const int factorial( int n){
     if(n!=1)
     return n*factorial(n-1);
 }
 
-void kopPole (int arr[], int tmp[], int size){
+void CopyArray (int arr[], int tmp[], const int size){
     for (int i = 0; i < size; i++){
         tmp[i] = arr [i];
     }
 }
 
-int maxPole (int arr[], int size){
+int ArrayMax (int arr[], const int size){
     int max = 0;
     for (int i = 0; i < size; i++){
         if ( arr[i] > max){
