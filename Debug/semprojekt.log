@@ -1,4 +1,0 @@
-﻿  main.cpp
-c:\users\v\documents\github\semprojekt\operace.h(45): warning C4715: 'factorial': not all control paths return a value
-  semprojekt.vcxproj -> C:\Users\V\Documents\GitHub\semprojekt\Debug\semprojekt.exe
-  semprojekt.vcxproj -> C:\Users\V\Documents\GitHub\semprojekt\Debug\semprojekt.pdb (Full PDB)
