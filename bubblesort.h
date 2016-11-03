@@ -58,12 +58,19 @@ void permutace (int EntryArray[],int ComparsionArray[],int ChangesArray[], int s
 
     do{
         CopyArray(EntryArray,tmp,size);
-        PointerAtChanges = &changes;									/**< Prirazeni adresy ukazateli */
-        PointerAtComparsions = &comparsions;							/**< Prirazeni adresy ukazateli */
-        BubbleSort(tmp, size, PointerAtChanges, PointerAtComparsions);	/**< Serazeni docasneho pole a prirazeni  */
-        ChangesArray[counter] = changes;								/**< ulozeni hodnot do pole zmen */
-        ComparsionArray[counter] = comparsions;							/**< ulozeni hodnot do pole porovnani */
-        counter++;
+        PointerAtChanges = &changes;								
+        PointerAtComparsions = &comparsions;
+		
+		/**< Serazeni docasneho pole a prirazeni  */
+		BubbleSort(tmp, size, PointerAtChanges, PointerAtComparsions);	
+		
+		/**< ulozeni hodnot do pole zmen */
+		ChangesArray[counter] = changes;								
+		
+		/**< ulozeni hodnot do pole porovnani */
+		ComparsionArray[counter] = comparsions;							
+        
+		counter++;
     }while (next_permutation(EntryArray,EntryArray+size));
 	delete[]tmp;
 }
