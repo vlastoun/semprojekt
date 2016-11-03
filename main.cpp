@@ -3,7 +3,7 @@
 #include "operace.h"
 #include "bubblesort.h"
 
-/** \brief Hlavni soubor programu
+/** \brief Hlavni soubor programu semprojekt
  *  \file main.cpp
  *  \author Vlastimil Sadilek
  *  \mainpage permutace
