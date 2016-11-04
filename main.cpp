@@ -1,7 +1,9 @@
 #include <iostream>     // cout, cin
 #include <algorithm>    // std::next_permutation, std::sort
+#include <vector>
 #include "operace.h"
 #include "bubblesort.h"
+#include "bubbleclass.h"
 
 /** \brief Hlavni soubor programu semprojekt 0.1.0
  *  \file main.cpp
@@ -49,13 +51,18 @@ int main () {
 	PrintArray(HistogramOfComparsions, MaxOfComparsions);
 	
 
-
 delete[] ArrayOfChanges;
 delete[] ArrayOfComparsions;
 delete[] HistogramOfChanges;
 delete[] HistogramOfComparsions;
 delete[] InputArray;
-	
+
+BubbleClass hovno(5);
+hovno.PrintOrder();
+hovno.SetOrder(6);
+hovno.PrintOrder();
+
+
 	return 0;
 }
 
