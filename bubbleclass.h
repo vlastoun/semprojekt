@@ -1,28 +1,34 @@
-#include <vector>;
+#include <vector>
 
 using namespace std;
 
 class BubbleClass{
 public:
 	void SetOrder(int SetOrderOfPermutations);
-	void PrintOrder();
+	void PrintInitOrder();
 	BubbleClass(int order) {
 		SetOrder(order);
+		InitializeArray(order);
 	}
 private:
 	int OrderOfPermutation;
-	vector<int> InitialArray;
-	void ArrayInitialize();
-};
+	vector<int> InitArray;
+	void InitializeArray(int size);
 
-void BubbleClass::ArrayInitialize() {
-	cout << "funkce aray initialize";
-}
+};
 
 void BubbleClass::SetOrder(int SetOrderOfPermutations) {
 	OrderOfPermutation = SetOrderOfPermutations;
 }
 
-void BubbleClass::PrintOrder() {
-	cout << "jajaja" << OrderOfPermutation << endl;
+void BubbleClass::PrintInitOrder() {
+	for (int i = 0; i < InitArray.size(); i++) {
+		cout << InitArray[i];
+	}
+}
+
+void BubbleClass::InitializeArray(int size) {
+	for (int i = 0; i < size; i++) {
+		InitArray.push_back(i + 1);
+	}
 }

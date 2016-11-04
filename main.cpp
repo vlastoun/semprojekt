@@ -57,10 +57,8 @@ delete[] HistogramOfChanges;
 delete[] HistogramOfComparsions;
 delete[] InputArray;
 
-BubbleClass hovno(5);
-hovno.PrintOrder();
-hovno.SetOrder(6);
-hovno.PrintOrder();
+	BubbleClass hovno(10);
+	hovno.PrintInitOrder();
 
 
 	return 0;
