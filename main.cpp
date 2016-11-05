@@ -8,20 +8,29 @@
 #include <algorithm>    // std::next_permutation, std::sort
 #include <vector>
 #include "bubbleclass.h"
+#include "histogram.h"
 
 using namespace std;
 
-int main () {
-	
+void PrintVector(vector<int>& array) {
+	int size = array.size();
+	for (int i = 0; i < size; i++) {
+		cout << array[i] << " ";
+	}
+	cout << endl;
+}
 
-	BubbleClass hovno(4);
-	hovno.PrintInitArray();
-	hovno.PrintArrOfChanges();
-	hovno.PrintArrOfComparsions();
-	BubbleClass prdy(5);
-	prdy.PrintInitArray();
-	prdy.PrintArrOfChanges();
-	prdy.PrintArrOfComparsions();
+int main () {
+	vector<int> vysledek;
+	vector<int> histogram1;
+
+	BubbleClass order4(4);
+	order4.PrintInitArray();
+	order4.PrintArrOfComparsions();
+	vysledek = order4.GetArrayOfComparsions();
+	HistogramClass obj(vysledek);
+	histogram1 = obj.GetHistogram();
+	PrintVector(histogram1);
 
 	return 0;
 }
