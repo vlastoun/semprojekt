@@ -1,46 +1,126 @@
-#include <vector>
-#include <algorithm>
+/** \brief soubor obsahujici tridu pro experimentalni zjisteni vysledku
+	Obsahuje tridu a jeji metody.
+*  \file bubbleclass.h
+*/
 
 using namespace std;
+
+/**
+* \class BubbleClass
+* \brief Hlavni trida pro splneni ukolu.
+* \par Popis tridy
+* Tato trida je pro vytvoreni pole porovnani a pole vymen
+* pro experimentalni vypocet slozitosti algoritmu Bubblesort.
+* Pole se inicializuje velikosti vstupniho pole, tzn velikost 4
+* bude obsahovat pole o prvcich {1, 2, 3, 4}. U tohoto pole se dale provedou
+* veskere jeho permutace napr.: {1, 3, 2, 4}; {1, 3, 4, 2}........{4, 3, 2, 1}.
+* Veskere tyto jednotlive pole jsou setrizeny a do vektoru ArrayOfComparsions
+* a ArrayOfChanges jsou zaznamenany pocty vymena porovnani pro jednotlive
+* permutace. ArrayOfComparsions a ArrayOfChanges dale slouzi pro vytvoreni
+* cetnosti.
+*
+* Created on: 5. 11. 2016
+*
+*/
+
 class BubbleClass {
 public:
+	
+	/** \brief Setter pro velikost vstupniho pole
+	 *	\param[in] SetOrderOfPermutations - funkce pro nastaveni velikosti pole
+	 *	\param[out] void
+	 */
 	void SetOrder(int SetOrderOfPermutations);
-	void PrintInitOrder();
+	
+	/**	\brief Metoda pro vypsani puvodniho pole
+	 *	\param[out] void
+	 *	Funkce vypise puvodni vstupni pole do obrazovky konzole
+	 */
+	void PrintInitArray();
+	
+	/**	\brief Metoda pro vypsani pole porovnani
+	*	\param[out] void
+	*	Funkce vypise pole(vektor) do obrazovky konzole
+	*/
 	void PrintArrOfComparsions() {
 		PrintVector(ArrOfComparsions);
 	}
+
+	/**	\brief Metoda pro vypsani pole vymen
+	*	\param[out] void
+	*	Funkce vypise pole(vektor) do obrazovky konzole
+	*/
 	void PrintArrOfChanges() {
 		PrintVector(ArrOfChanges);
 	}
 
+	/**	\brief Konstruktor pro BubbleClass
+	*	\param[out] void
+	*	\detailInicializace vstupniho radu a provedeni potrebnych operaci.
+	*/
 	BubbleClass(int order) {
 		SetOrder(order);
 		InitializeArray(order);
 		InputArrayPermutations();
 	}
 private:
+
+	/*!> Deklarace promennych*/
 	int OrderOfPermutation;
 	int NumberOFPermutations;
-
 	vector<int> InitArray;
 	vector<int> ArrOfComparsions;
 	vector<int> ArrOfChanges;
 	
+	/**	\brief Funkce pro vypocet faktorialu
+	*	\param[in] number - int pro vypocet faktorialu
+	*	\param[out] number! - int faktorial hondoty number
+	*/
 	int factorial(int order);
 
+	/**	\brief Metoda pro experimentalni urceni slozitosti
+	*	\par Popis funkce
+	*	Funkce provede veskere permutace vstupniho pole InitArray. Tyto jednotlive permutace
+	*	jsou pote setrizeny algoritmem "BUBBLE SORT".
+	*	\param[in] -
+	*	\param[out] -
+	*/
 	void InputArrayPermutations();
 
+	/**	\brief Metoda pro pro inicializaci pole
+	*	Funkce, ktera inicializuje uvodni pole. Pri zadani radu N bude pole
+	*	obsahovat pole o velikosti N prvku a bude obsahovat prvky {1, 2, ..., N}
+	*	\param[in] size - int velikost pole
+	*	\param[out] void
+	*	
+	*/
 	void InitializeArray(int size);
+	
+	/**	\brief Tridici algoritmus "BUBBLE SORT"
+	*	\par Popis funkce
+	*	Funkce setridi vstupni pole a pocita pocet vymen a porovnani.
+	*	Tyto hodnoty jsou pote zapsany do vektoru ArrayOfChanges a ArrayOfComparsions.
+	*	\param[in] vector<int>& array - vektor k setrizeni
+	*	\param[out] void
+	*/
 	void BubbleSort(vector<int>& array);
+
+	/**	\brief Funkce pro tisk vektoru
+	*	\param[in] vector<int>& array
+	*	\param[out] - void
+	*/
 	void PrintVector(vector<int>& array);
+	
+	/**	\brief Funkce pro kopirovani vektoru do jineho vektoru
+	*	\param[in] vector<int>& FirstVector - vektor, ktery bude kopirovan
+	*	\param[in] vector<int>& CopyOfVector - vektor, do ktereho se bude kopirovat
+	*/
 	void CopyVector(vector<int>& FirstVector, vector<int>& CopyOfVector);
 };
 
 
 int BubbleClass::factorial(int number) {
-	if (number != 1) {
-		return number*factorial(number - 1);
-	}
+
 }
 
 void BubbleClass::SetOrder(int SetOrderOfPermutations) {
@@ -48,7 +128,7 @@ void BubbleClass::SetOrder(int SetOrderOfPermutations) {
 	NumberOFPermutations = factorial(SetOrderOfPermutations);
 }
 
-void BubbleClass::PrintInitOrder() {
+void BubbleClass::PrintInitArray() {
 	int size = InitArray.size();
 	for (int i = 0; i < size; i++) {
 		cout << InitArray[i] << " ";
@@ -56,11 +136,14 @@ void BubbleClass::PrintInitOrder() {
 	cout << endl;
 }
 
+
 void BubbleClass::InitializeArray(int size) {
 	for (int i = 0; i < size; i++) {
 		InitArray.push_back(i+1);
 	}
 }
+
+
 
 void BubbleClass::BubbleSort(vector<int>& array) {
 	int size = array.size();
@@ -95,15 +178,18 @@ void BubbleClass::InputArrayPermutations() {
 	vector<int> tmp;
 	tmp.resize(size);
 	do {
-		/*cout << "Permutace " << counter<< endl;*/
+		/*!< Kopirovani permutovaneho pole do docasneho pole*/
 		CopyVector(InitArray, tmp);
-		/*PrintVector(tmp);*/
+
+		/*!< Setrizeni docasneho pole a vlozeni vysledku do ArrayOfComparsions
+		a ArrayOfChanges
+		*/
 		BubbleSort(tmp);
-		/*PrintVector(tmp);*/
-		/*cout << endl;*/
+		
 		counter++;
 	} while (std::next_permutation(InitArray.begin(),InitArray.end()));
 }
+
 
 void BubbleClass::PrintVector(vector<int>& array) {
 	int size = array.size();
@@ -112,6 +198,7 @@ void BubbleClass::PrintVector(vector<int>& array) {
 	}
 	cout << endl;
 }
+
 
 void BubbleClass::CopyVector(vector<int>& FirstVector, vector<int>& CopyOfVector) {
 	int size = FirstVector.size();
