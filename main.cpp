@@ -9,6 +9,8 @@
 #include <vector>
 #include "bubbleclass.h"
 #include "histogram.h"
+#include "printtofile.h"
+
 
 using namespace std;
 
@@ -24,12 +26,15 @@ int main () {
 	vector<int> vysledek;
 	vector<int> histogram1;
 
-	BubbleClass order4(8);
+	BubbleClass order4(5);
 	order4.PrintInitArray();
 	vysledek = order4.GetArrayOfComparsions();
 	HistogramClass obj(vysledek);
 	histogram1 = obj.GetHistogram();
 	PrintVector(histogram1);
+	PrintToFileClass obj1(histogram1);
+	obj1.MakeFile();
+	order4.PrintArrOfComparsions();
 
 
 	return 0;
