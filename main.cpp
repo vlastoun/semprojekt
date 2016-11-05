@@ -23,18 +23,24 @@ void PrintVector(vector<int>& array) {
 }
 
 int main () {
-	vector<int> vysledek;
-	vector<int> histogram1;
+	int MaxSize;
+	vector<BubbleClass> Permutations;
+	
+	cout << "Zadejte maximalni velikost pole:" << endl;
+	cin >> MaxSize;
+	for (int i = 0; i < MaxSize; i++) {
+		Permutations.push_back(BubbleClass(i+1));
+	}
+	cout << "Pole urcena k permutacim" << endl;
+	for (int i = 0; i < MaxSize; i++) {
+		Permutations[i].PrintInitArray();
+	}
+	vector < vector<int>> ArrayOfComparsions;
+	
+	for (int i = 0; i < MaxSize; i++) {
+		ArrayOfComparsions[i].push_back() = Permutations[i].GetArrayOfComparsions;
+	}
 
-	BubbleClass order4(5);
-	order4.PrintInitArray();
-	vysledek = order4.GetArrayOfComparsions();
-	HistogramClass obj(vysledek);
-	histogram1 = obj.GetHistogram();
-	PrintVector(histogram1);
-	PrintToFileClass obj1(histogram1);
-	obj1.MakeFile();
-	order4.PrintArrOfComparsions();
 
 
 	return 0;
