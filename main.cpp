@@ -59,6 +59,8 @@ delete[] InputArray;
 
 	BubbleClass hovno(10);
 	hovno.PrintInitOrder();
+	hovno.SortInitArray();
+	hovno.PrintInitOrder();
 
 
 	return 0;
