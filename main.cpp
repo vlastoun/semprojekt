@@ -37,31 +37,30 @@ int main () {
 	PrintArray(ArrayOfComparsions, NumberOfPermutations);
 
 
-	int MaxOfChanges = ArrayMax(ArrayOfChanges, NumberOfPermutations) + 1;
-	int *HistogramOfChanges;
-	HistogramOfChanges = new int[MaxOfChanges];
-	histogram(ArrayOfChanges, HistogramOfChanges, NumberOfPermutations, MaxOfChanges);
-	PrintArray(HistogramOfChanges, MaxOfChanges);
+//	int MaxOfChanges = ArrayMax(ArrayOfChanges, NumberOfPermutations) + 1;
+//	int *HistogramOfChanges;
+//	HistogramOfChanges = new int[MaxOfChanges];
+//	histogram(ArrayOfChanges, HistogramOfChanges, NumberOfPermutations, MaxOfChanges);
+//	PrintArray(HistogramOfChanges, MaxOfChanges);
+//
+//
+//	int MaxOfComparsions = ArrayMax(ArrayOfComparsions, NumberOfPermutations) + 1;
+//	int *HistogramOfComparsions;
+//	HistogramOfComparsions = new int[MaxOfComparsions];
+//	histogram(ArrayOfComparsions, HistogramOfComparsions, NumberOfPermutations, MaxOfComparsions);
+//	PrintArray(HistogramOfComparsions, MaxOfComparsions);
+//	
+//
+//delete[] ArrayOfChanges;
+//delete[] ArrayOfComparsions;
+//delete[] HistogramOfChanges;
+//delete[] HistogramOfComparsions;
+//delete[] InputArray;
 
-
-	int MaxOfComparsions = ArrayMax(ArrayOfComparsions, NumberOfPermutations) + 1;
-	int *HistogramOfComparsions;
-	HistogramOfComparsions = new int[MaxOfComparsions];
-	histogram(ArrayOfComparsions, HistogramOfComparsions, NumberOfPermutations, MaxOfComparsions);
-	PrintArray(HistogramOfComparsions, MaxOfComparsions);
-	
-
-delete[] ArrayOfChanges;
-delete[] ArrayOfComparsions;
-delete[] HistogramOfChanges;
-delete[] HistogramOfComparsions;
-delete[] InputArray;
-
-	BubbleClass hovno(10);
+	BubbleClass hovno(4);
 	hovno.PrintInitOrder();
-	hovno.SortInitArray();
-	hovno.PrintInitOrder();
-
+	hovno.PrintArrOfChanges();
+	hovno.PrintArrOfComparsions();
 
 	return 0;
 }

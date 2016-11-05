@@ -1,41 +1,64 @@
 #include <vector>
+#include <algorithm>
 
 using namespace std;
-
-class BubbleClass{
+class BubbleClass {
 public:
 	void SetOrder(int SetOrderOfPermutations);
 	void PrintInitOrder();
-	void SortInitArray();
+	void PrintArrOfComparsions() {
+		PrintVector(ArrOfComparsions);
+	}
+	void PrintArrOfChanges() {
+		PrintVector(ArrOfChanges);
+	}
+
 	BubbleClass(int order) {
 		SetOrder(order);
 		InitializeArray(order);
+		InputArrayPermutations();
 	}
 private:
 	int OrderOfPermutation;
+	int NumberOFPermutations;
 
 	vector<int> InitArray;
-	vector<int> ArrayOfComparsions;
-	vector<int> ArrayOfChanges;
+	vector<int> ArrOfComparsions;
+	vector<int> ArrOfChanges;
 	
+	int factorial(int order);
+
+	void InputArrayPermutations();
+
 	void InitializeArray(int size);
 	void BubbleSort(vector<int>& array);
+	void PrintVector(vector<int>& array);
+	void CopyVector(vector<int>& FirstVector, vector<int>& CopyOfVector);
 };
+
+
+int BubbleClass::factorial(int number) {
+	if (number != 1) {
+		return number*factorial(number - 1);
+	}
+}
 
 void BubbleClass::SetOrder(int SetOrderOfPermutations) {
 	OrderOfPermutation = SetOrderOfPermutations;
+	NumberOFPermutations = factorial(SetOrderOfPermutations);
 }
 
 void BubbleClass::PrintInitOrder() {
-	for (int i = 0; i < InitArray.size(); i++) {
+	int size = InitArray.size();
+	for (int i = 0; i < size; i++) {
 		cout << InitArray[i] << " ";
 	}
 	cout << endl;
 }
 
 void BubbleClass::InitializeArray(int size) {
-	for (int i = 0, j = size; i < size; i++, j--) {
-		InitArray.push_back(j);
+	for (int i = 0; i < size; i++) {
+		InitArray.push_back(i+1);
 	}
 }
 
@@ -59,8 +82,40 @@ void BubbleClass::BubbleSort(vector<int>& array) {
 		}
 		Right = LastExchangeIndex;
 	} while (LastExchangeIndex > 0);
+	//cout << "vymen " << changes << endl;
+	//cout << "porovnani " << comparsions << endl;
+	ArrOfChanges.push_back(changes);
+	ArrOfComparsions.push_back(comparsions);
 }
 
-void BubbleClass::SortInitArray() {
-	BubbleSort(InitArray);
+
+void BubbleClass::InputArrayPermutations() {
+	int size = InitArray.size();
+	int counter = 0;
+	vector<int> tmp;
+	tmp.resize(size);
+	do {
+		/*cout << "Permutace " << counter<< endl;*/
+		CopyVector(InitArray, tmp);
+		/*PrintVector(tmp);*/
+		BubbleSort(tmp);
+		/*PrintVector(tmp);*/
+		/*cout << endl;*/
+		counter++;
+	} while (std::next_permutation(InitArray.begin(),InitArray.end()));
+}
+
+void BubbleClass::PrintVector(vector<int>& array) {
+	int size = array.size();
+	for (int i = 0; i < size; i++) {
+		cout << array[i] << " ";
+	}
+	cout << endl;
+}
+
+void BubbleClass::CopyVector(vector<int>& FirstVector, vector<int>& CopyOfVector) {
+	int size = FirstVector.size();
+	for (int i = 0; i < size; i++) {
+		CopyOfVector[i] = FirstVector[i];
+	}
 }
