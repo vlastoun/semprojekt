@@ -29,8 +29,7 @@ int main () {
 	order4.PrintArrOfComparsions();
 	vysledek = order4.GetArrayOfComparsions();
 	HistogramClass obj(vysledek);
-	histogram1 = obj.GetHistogram();
-	PrintVector(histogram1);
+
 
 	return 0;
 }
