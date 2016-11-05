@@ -24,11 +24,12 @@ int main () {
 	vector<int> vysledek;
 	vector<int> histogram1;
 
-	BubbleClass order4(4);
+	BubbleClass order4(8);
 	order4.PrintInitArray();
-	order4.PrintArrOfComparsions();
 	vysledek = order4.GetArrayOfComparsions();
 	HistogramClass obj(vysledek);
+	histogram1 = obj.GetHistogram();
+	PrintVector(histogram1);
 
 
 	return 0;
