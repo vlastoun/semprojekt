@@ -19,6 +19,7 @@ Thumbs.db
 *.cache
 *.ilk
 *.log
+*.csv
 [Bb]in
 [Dd]ebug*/
 *.lib
@@ -33,17 +34,4 @@ semprojekt.vcxproj
 semprojekt.vcxproj.filters
 /docs
 semprojekt.VC.VC.opendb
-Vystup_programu/default.csv
-Vystup_programu/histogram cetnosti vymen.csv
-semprojekt/Vystup_programu/10rad_cetosti porovnani.csv
-semprojekt/Vystup_programu/10rad_cetosti vymen.csv
-semprojekt/Vystup_programu/1rad_cetosti porovnani.csv
-semprojekt/Vystup_programu/1rad_cetosti vymen.csv
-semprojekt/Vystup_programu/2rad_cetosti porovnani.csv
-semprojekt/Vystup_programu/2rad_cetosti vymen.csv
-semprojekt/Vystup_programu/3rad_cetosti porovnani.csv
-semprojekt/Vystup_programu/3rad_cetosti vymen.csv
-semprojekt/Vystup_programu/4rad_cetosti porovnani.csv
-semprojekt/Vystup_programu/4rad_cetosti vymen.csv
-semprojekt/Vystup_programu/9rad_cetosti porovnani.csv
-semprojekt/Vystup_programu/9rad_cetosti vymen.csv
+
