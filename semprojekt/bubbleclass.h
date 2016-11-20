@@ -1,5 +1,6 @@
+#pragma once
 /** \brief soubor obsahujici tridu pro experimentalni zjisteni vysledku
-	Obsahuje tridu a jeji metody.
+Obsahuje tridu a jeji metody.
 *  \file bubbleclass.h
 */
 
@@ -25,21 +26,21 @@ using namespace std;
 
 class BubbleClass {
 public:
-	
+
 	/** \brief Setter pro velikost vstupniho pole
-	 *	\param[in] SetOrderOfPermutations - funkce pro nastaveni velikosti pole
-	 *	\param[out] void
-	 */
+	*	\param[in] SetOrderOfPermutations - funkce pro nastaveni velikosti pole
+	*	\param[out] void
+	*/
 	void SetOrder(int SetOrderOfPermutations) {
 		OrderOfPermutation = SetOrderOfPermutations;
 		NumberOFPermutations = factorial(SetOrderOfPermutations);
 	}
-	
-	
+
+
 	/**	\brief Metoda pro vypsani puvodniho pole
-	 *	\param[out] void
-	 *	Funkce vypise puvodni vstupni pole do obrazovky konzole
-	 */
+	*	\param[out] void
+	*	Funkce vypise puvodni vstupni pole do obrazovky konzole
+	*/
 	void PrintInitArray() {
 		int size = InitArray.size();
 		for (int i = 0; i < size; i++) {
@@ -47,8 +48,8 @@ public:
 		}
 		cout << endl;
 	}
-	
-	
+
+
 	/**	\brief Metoda pro vypsani pole porovnani
 	*	\param[out] void
 	*	Funkce vypise pole(vektor) do obrazovky konzole
@@ -79,9 +80,9 @@ public:
 	const vector<int> & GetArrayOfComparsions() {
 		return ArrOfComparsions;
 	}
-	
-	
-	
+
+
+
 	/**	\brief Konstruktor pro BubbleClass
 	*	\param[out] void
 	*	\detailInicializace vstupniho radu a provedeni potrebnych operaci.
@@ -107,11 +108,11 @@ private:
 
 	/*!> Deklarace vektoru pole porovnani*/
 	vector<int> ArrOfComparsions;
-	
+
 	/*!> Deklarace vektoru pole zmen*/
 	vector<int> ArrOfChanges;
-	
-	
+
+
 	/**	\brief Funkce pro vypocet faktorialu
 	*	\param[in] number - int pro vypocet faktorialu
 	*	\param[out] number! - int faktorial hondoty number
@@ -122,7 +123,7 @@ private:
 		}
 	}
 
-	
+
 	/**	\brief Metoda pro experimentalni urceni slozitosti
 	*	\par Popis funkce
 	*	Funkce provede veskere permutace vstupniho pole InitArray. Tyto jednotlive permutace
@@ -148,21 +149,21 @@ private:
 		} while (std::next_permutation(InitArray.begin(), InitArray.end()));
 	}
 
-	
+
 	/**	\brief Metoda pro pro inicializaci pole
 	*	Funkce, ktera inicializuje uvodni pole. Pri zadani radu N bude pole
 	*	obsahovat pole o velikosti N prvku a bude obsahovat prvky {1, 2, ..., N}
 	*	\param[in] size - int velikost pole
 	*	\param[out] void
-	*	
+	*
 	*/
 	void InitializeArray(int size) {
 		for (int i = 0; i < size; i++) {
 			InitArray.push_back(i + 1);
 		}
 	}
-	
-	
+
+
 	/**	\brief Tridici algoritmus "BUBBLE SORT"
 	*	\par Popis funkce
 	*	Funkce setridi vstupni pole a pocita pocet vymen a porovnani.
@@ -194,7 +195,7 @@ private:
 		ArrOfComparsions.push_back(comparsions);
 	}
 
-	
+
 	/**	\brief Funkce pro tisk vektoru
 	*	\param[in] vector<int>& array
 	*	\param[out] - void
@@ -206,8 +207,8 @@ private:
 		}
 		cout << endl;
 	}
-	
-	
+
+
 	/**	\brief Funkce pro kopirovani vektoru do jineho vektoru
 	*	\param[in] vector<int>& FirstVector - vektor, ktery bude kopirovan
 	*	\param[in] vector<int>& CopyOfVector - vektor, do ktereho se bude kopirovat

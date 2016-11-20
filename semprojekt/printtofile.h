@@ -1,7 +1,7 @@
+#pragma once
 #include <vector>
 #include <fstream>
 #include <sstream>
-#include <Windows.h>
 using namespace std;
 
 class PrintToFileClass {
@@ -29,9 +29,9 @@ private:
 	string NameOfValues;
 	string NameOfFile;
 	string OutputFolder;
-	
-	
-	void PrintToFile() {		
+
+
+	void PrintToFile() {
 		int NumberOfRows = ThingsToPrint.size();
 		string path = OutputFolder + "/" + NameOfFile + ".csv";
 		ofstream OutputFile(path);
