@@ -1,4 +1,4 @@
-/** \brief Hlavni soubor programu semprojekt 0.1.0
+/** \brief Hlavni soubor programu semprojekt
 *  \file main.cpp
 *  \author Vlastimil Sadilek SAD045
 *  \mainpage Algoritmy: Zadani 4 - Bubblesort
