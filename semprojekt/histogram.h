@@ -1,8 +1,7 @@
 /** \brief soubor obsahujici tridu pro tvorbu tabulky cetnosti
-Obsahuje definici tridy.
+*	Obsahuje definici tridy.
 *  \file histogram.h
 */
-
 #pragma once
 #include <vector>
 

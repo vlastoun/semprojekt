@@ -12,7 +12,7 @@ void BubbleClass::SetOrder(int SetOrderOfPermutations) {
 void BubbleClass::PrintInitArray() {
 	int size = InitArray.size();
 	for (int i = 0; i < size; i++) {
-		cout << InitArray[i] << " ";
+		cout << InitArray.at(i) << " ";
 	}
 	cout << endl;
 }
@@ -73,10 +73,10 @@ void BubbleClass::BubbleSort(vector<int>& array) {
 		LastExchangeIndex = 0;
 		for (int i = 0; i < Right; i++) {
 			comparsions++;
-			if (array[i]>array[i + 1]) {
-				int tmp = array[i];
-				array[i] = array[i + 1];
-				array[i + 1] = tmp;
+			if (array.at(i)>array.at(i+1)) {
+				int tmp = array.at(i);
+				array.at(i) = array.at(i+1);
+				array.at(i+1) = tmp;
 				changes = changes + 2;
 				LastExchangeIndex = i + 1;
 			}
@@ -90,7 +90,7 @@ void BubbleClass::BubbleSort(vector<int>& array) {
 void BubbleClass::PrintVector(vector<int>& array) {
 	int size = array.size();
 	for (int i = 0; i < size; i++) {
-		cout << array[i] << " ";
+		cout << array.at(i) << " ";
 	}
 	cout << endl;
 }
@@ -98,6 +98,6 @@ void BubbleClass::PrintVector(vector<int>& array) {
 void BubbleClass::CopyVector(vector<int>& FirstVector, vector<int>& CopyOfVector) {
 	int size = FirstVector.size();
 	for (int i = 0; i < size; i++) {
-		CopyOfVector[i] = FirstVector[i];
+		CopyOfVector.at(i) = FirstVector.at(i);
 	}
 }

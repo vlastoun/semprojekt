@@ -15,8 +15,8 @@ const vector<int> & HistogramClass::GetHistogram() {
 int HistogramClass::MaxOfInputArray() {
 	int max = 0;
 	for (int i = 0; i < SizeOfInputArray; i++) {
-		if (this->InputArray[i] > max) {
-			max = this->InputArray[i];
+		if (this->InputArray.at(i) > max) {
+			max = this->InputArray.at(i);
 		}
 	}
 	return max;
@@ -33,7 +33,7 @@ void HistogramClass::MakeHistogram() {
 	for (int i = 0; i < this->MaximumOfHistogram; i++) {
 		for (int j = 0; j < SizeOfInputArray; j++) {
 			if (i = InputArray[j]) {
-				histogram[i] = histogram[i] + 1;
+				histogram.at(i) = histogram.at(i) + 1;
 			}
 		}
 	}

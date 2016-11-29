@@ -21,9 +21,15 @@ void PrintToFileClass::PrintToFile() {
 	int		NumberOfRows	= ThingsToPrint.size();
 	string	path			= OutputFolder + "/" + NameOfFile + ".csv";
 
-	ofstream OutputFile(path);
+	ofstream OutputFile;
+	OutputFile.open(path);
+	
+	if (OutputFile.fail()) {
+		cout << "Problem s vytvorenim souboru" << endl;
+	}
 	OutputFile << "Pocet " << NameOfValues << ";" << "Cetnost" << endl;
 	for (int i = 0; i < NumberOfRows; i++) {
-		OutputFile << i << ";" << ThingsToPrint[i] << endl;;
+		OutputFile << i << ";" << ThingsToPrint.at(i) << endl;;
 	}
+	OutputFile.close();
 }

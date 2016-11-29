@@ -35,3 +35,8 @@ semprojekt.vcxproj.filters
 /docs
 semprojekt.VC.VC.opendb
 
+**/Debug/
+**/Release/
+*.txt
+*.html
+**/Dokumentace/

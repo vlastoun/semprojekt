@@ -7,6 +7,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <string>
 #include "bubbleclass.h"
 #include "histogram.h"
 #include "printtofile.h"
@@ -15,62 +16,74 @@
 using namespace std;
 
 void PrintVector(vector<int> array);
-bool inputValidation(int toValidate);
+bool toConsoleValidation(string str, bool& outputToConsole);
 
 int main() {
 	int order;
-	bool outputToConsole;
-	char vstup[1];
+	bool outputToConsole =  false;
+	int counter = 0; /**< citac pro spatne vstupy */
+	string choiceOfConsoleIO;
 
-	cout << "Zadejte maximalni velikost pole (cislo kladne od 0):" << endl;
+	/** Menu programu
+	*  
+	*/
+	cout << "Zadejte rad permutace - kladne cislo od 1:" << endl;
 	cin >> order;
-	if (!inputValidation(order)) {
-		cout << "Nespravny vstup" << endl;
-		cout << "Konec programu" << endl;
-		return 0;
+	while (cin.fail()||order <1) {
+		cout << "Spatne zadany vstup" << endl;
+		cin.clear();
+		cin.ignore(256, '\n');
+		cin >> order;
+		counter++;
+		if (counter == 10) {
+			order = 5;
+			cout << "Mnoho spatnych vstupu zvolen rad permutace 5" << endl;
+			break;
+		}
 	}
-	if (order < 1) {
-		cout << "Nespravny vstup" << endl;
-		cout << "Konec programu" << endl;
-		return 0;
+
+	cout << "Chcete vystup do konzole? zadejte volbu A/N :" << endl;
+	counter = 0;
+	cin >> choiceOfConsoleIO;
+	while (toConsoleValidation(choiceOfConsoleIO, outputToConsole)) {
+		cout << "Spatne zadany vstup" << endl;
+		cin.clear();
+		cin.ignore(256, '\n');
+		cin >> choiceOfConsoleIO;
+		counter++;
+		if (counter == 10) {
+			cout << "Mnoho spatnych vstupu vystup do konzole vypnut" << endl;
+			outputToConsole = false;
+			break;
+		}
 	}
 	
-	cout << "Chcete výstup na obrazovku? A/N" << endl;
-	cin >> vstup[0];
-	while ((vstup[0] != 'A') && (vstup[0] != 'N')) {
-		cout << "Zadejte A pro vystup na obrazovku nebo N pro primy tisk do souboru" << endl;
-		cin >> vstup[0];
-	}
-	if (vstup[0] == 'A') {
-		outputToConsole = 1;
-	}
-	else if (vstup[0] == 'N') {
-		outputToConsole = 0;
-	}
-	else {
-		cout << "Konec programu" << endl;
-		return 0;
-	}
-			
-	BubbleClass order1(order);
 
-	vector<int>	arrayOfChanges		= order1.GetArrayOfChanges();
-	vector<int>	arrayOfComparsions	= order1.GetArrayOfComparsions();
+	/** Tvorba histogramu
+	*
+	*/
+	BubbleClass permutations(order);
+
+	vector<int>	arrayOfChanges		= permutations.GetArrayOfChanges();
+	vector<int>	arrayOfComparsions	= permutations.GetArrayOfComparsions();
 
 	HistogramClass histogramOfChanges(arrayOfChanges);
 	HistogramClass histogramOfComparsions(arrayOfComparsions);
 	
+	/** Vystup do konzole
+	*
+	*/
 	if (outputToConsole) {
 		cout << "Vstupni pole:" << endl;
-		order1.PrintInitArray();
+		permutations.PrintInitArray();
 		cout << endl;
 
 		cout << "Pole vymen:" << endl;
-		order1.PrintArrOfChanges();
+		permutations.PrintArrOfChanges();
 		cout << endl;
 
 		cout << "Pole porovnani:" << endl;
-		order1.PrintArrOfComparsions();
+		permutations.PrintArrOfComparsions();
 		cout << endl;
 
 		cout << "Pole cetnosti vymen:" << endl;
@@ -82,6 +95,9 @@ int main() {
 		cout << endl;
 	}
 
+	/** Vystup do souboru
+	*
+	*/
 	vector<int> hChangesToPrint	= histogramOfChanges.GetHistogram();
 	vector<int> hComparsionsToPrint	= histogramOfComparsions.GetHistogram();
 	string		nameOfFile1 = to_string(order) + "rad_cetosti vymen";
@@ -97,25 +113,41 @@ int main() {
 	file2.SetNameOfValues("pocet porovnani");
 	file2.MakeFile();
 
-
-	cout << "Konec programu" << endl;
+	/** Konec programu
+	*
+	*/
+	cout << endl << "Konec programu" << endl << endl;
 	return 0;
 }
 
-void PrintVector(vector<int> array) {
-	int size = array.size();
+/** Definice pomocne funkce pro tisk vektoru do konzole
+*	\param[in] vector<int> vec
+*/
+void PrintVector(vector<int> vec) {
+	int size = vec.size();
 	for (int i = 0; i < size; i++) {
-		cout << array[i] << " ";
+		cout << vec.at(i) << " ";
 	}
 	cout << endl;
 }
 
-bool inputValidation(int toValidate) {
-	if (cin.fail()) {
+
+/**	\brief	Kontrola vstupu pro vystup do konzole a nstaveni promenne na tisk konzole
+*	\param[in] vector<int> &InputVector
+*	\param[out] true pri spatnem vstupu, false pri spravnem vstupu
+*/
+bool toConsoleValidation(string str, bool& outputToConsole) {
+	if (!str.compare("a") || !str.compare("A")) {
+		outputToConsole = true;
+		return false;
+	}
+	else if (!str.compare("n") || !str.compare("N")) {
+		outputToConsole = false;
 		return false;
 	}
 	else {
 		return true;
 	}
+
 }
 
